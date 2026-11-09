@@ -225,12 +225,12 @@ export default function App() {
   const [calendarDate, setCalendarDate] = useState(new Date());
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
+  const unsubscribe = onAuthStateChanged(auth, (currentUser: User | null) => {
+    setUser(currentUser);
+    setLoading(false);
+  });
+  return () => unsubscribe();
+}, []);
 
   useEffect(() => {
     localStorage.setItem('periodica_theme', theme);
